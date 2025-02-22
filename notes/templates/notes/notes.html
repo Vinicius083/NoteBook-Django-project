@@ -1,0 +1,21 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Notas</title>
+</head>
+<body>
+    <h1>Minhas Notas</h1>
+    <a href="{% url 'notes:add_note' user_id=user_id %}">Adicionar Nota</a>
+    <ul>
+        {% for note in notes %}
+            <li>
+                <strong>{{ note.title }}</strong><br>
+                {{ note.content }}<br>
+                <a href="{% url 'notes:update_note' note_id=note.id user_id=user_id %}">Editar</a>
+                <a href="{% url 'notes:delete_note' note_id=note.id %}" onclick="return confirm('Tem certeza que deseja excluir esta nota?');">Excluir</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Nota</title>
+</head>
+<body>
+    <h1>Editar Nota</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="title">Título:</label>
+        <input type="text" id="title" name="title" value="{{ note.title }}" required><br>
+        <label for="content">Conteúdo:</label>
+        <textarea id="content" name="content" required>{{ note.content }}</textarea><br>
+        <button type="submit">Salvar</button>
+    </form>
+    <a href="{% url 'notes:get_notes_from_user' user_id %}">Voltar</a>
+</body>
+</html>

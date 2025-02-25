@@ -5,7 +5,6 @@ from .models import Note, User
 
 def get_notes_from_user(request, user_id):
     notes = Note.objects.filter(user_id=user_id)
-    print(notes)
     return render(request, 'notes/notes.html', {'notes': notes, 'user_id': user_id})
 
 def add_note(request, user_id):
